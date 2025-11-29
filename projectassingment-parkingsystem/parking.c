@@ -7,7 +7,7 @@ void main() {
     int charge;
 
     printf("Enter Vehicle Number: ");
-    scanf("%s", vehicleNumber);
+    scanf("%s", &vehicleNumber);
 
     printf("Enter Entry Time (HH MM): ");
     scanf("%d %d", &entryHour, &entryMinute);
@@ -21,12 +21,17 @@ void main() {
         printf("Error: Exit time cannot be earlier than entry time.\n");
         return;
     }
+    if (totalHours>12){
+        printf("Error: Parking duration cannot exceed 12 hours.\n");
+        return;
+    }
 
     totalHours = totalMinutes / 60;
 
     if (totalHours <= 2) {
         charge = totalHours * 5;
-    } else {
+    }
+     else {
         charge = 2 * 5 + (totalHours - 2) * 3;
     }
 
